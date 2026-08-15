@@ -4,56 +4,329 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CDN引入 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>index</title>
   </head>
   <body>
-    <%- include('./layout/header'); -%>
+<!-- *載入header -->
+<%- include('./layout/header'); -%>
 
-    <h1 class="index-title">我是首頁</h1>
-  <p>今日完成任務5!!!!!!!!</p>
-  <p>今日完成任務5!!!!!!!!</p>
-  <p>今日完成任務5!!!!!!!!</p>
+<!-- * index首頁 -->
+
+  <main class="bg-light">
+    <div class="container py-5">
+      <div class="row gy-3">
+        <!-- todo:左邊list-group -->
+        <!-- 預設手機版滿版col-12不用撰寫 -->
+        <div class="col-lg-3">
+          <div class="list-group">
+            <div class="list-group-item py-5 text-center">
+              <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2026-week5/avatar.png" alt="avatar" class="mb-3">
+              <h3 class="h4 mb-2">Josh</h3>
+              <p class="text-secondary mb-2 text-sm">helloworld@gmail.com</p>
+              <span class="badge text-bg-success text-sm fw-normal lh-base px-2 py-1 rounded-3">
+                已驗證</span>
+            </div>
+<!-- *分頁按鈕 -->
+            <button
+            data-bs-toggle="tab" 
+            data-bs-target="#profile-tab-pane"
+            type="button" class="list-group-item list-group-item-action py-12">
+              <i class="bi bi-person me-2 "></i>
+              個人資料</button>
+            <button
+            data-bs-toggle="tab" 
+            data-bs-target="#upload-tab-pane"
+            type="button" class="list-group-item list-group-item-action py-12">
+              <i class="bi bi-laptop me-2"></i>
+              我上架的 AI 工具</button>
+            <button
+            data-bs-toggle="tab" 
+            data-bs-target="#subscribe-tab-pane"
+            type="button" class="list-group-item list-group-item-action py-12">
+              <i class="bi bi-list-ul me-2"></i>
+              我訂閱的 AI 工具</button>
+          </div><!-- list-group的結束 -->
+        </div> <!-- col-lo-3的結束 -->
+
+        <!-- todo:右邊tab-content -->
+        <div class="col-lg-9">
+          <div class="tab-content" id="myTabContent">
+            <!-- 1個人資料 -->
+            <div 
+            class="tab-pane fade show active"
+            id="profile-tab-pane"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+            tabindex="0">
+
+            <form>
+                <!-- ...基本資料 -->
+                <div class="bg-white p-5 rounded-3 mb-4">
+                  <h1 class="h4 mb-4">基本資料</h1>
+                  <div class="row gy-4">
+                    <div class="col-lg-6">
+                      <!-- 基本資料 -->
+                      <label 
+                      for="userName" class="form-label mb-1">
+                      姓名
+                      <span class="ms-1 text-danger">*</span>
+                      </label>
+                      <input 
+                      type="text" 
+                      class="form-control" 
+                      id="userName" 
+                      placeholder="請輸入您的姓名"
+                      value="Josh"
+                      />
+                    </div>
+                    <div class="col-lg-6">
+                      <label 
+                      for="nikeName" class="form-label mb-1">
+                      暱稱
+                      <span class="ms-1 text-danger">*</span>
+                      </label>
+                      <input 
+                      type="text" 
+                      class="form-control" 
+                      id="nikeName" 
+                      placeholder="請輸入您的暱稱"
+                      value=""
+                      />
+                    </div>
+                    <div class="col-lg-6">
+                      <label 
+                      for="choseDate" class="form-label mb-1">
+                      請選擇日期
+                      <span class="ms-1 text-danger">*</span>
+                      </label>
+                      <input 
+                      type="date" 
+                      class="form-control" 
+                      id="choseDate" 
+                      placeholder="請選擇日期"
+                      value=""
+                      />
+                    </div>
+                    <div class="col-lg-6">
+                      <label 
+                      for="email" class="form-label mb-1">
+                      聯絡信箱
+                      <span class="ms-1 text-danger">*</span>
+                      </label>
+                      <input 
+                      type="email" 
+                      class="form-control" 
+                      id="email" 
+                      placeholder="請輸入您的聯絡信箱"
+                      />
+                    </div>
+                    <div class="col-lg-6">
+                      <label 
+                      for="tel" class="form-label mb-1">
+                      聯絡電話
+                      <span class="ms-1 text-danger">*</span>
+                      </label>
+                      <input 
+                      type="tel" 
+                      class="form-control" 
+                      id="tel" 
+                      placeholder="0912345678"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <!-- 通知設定checks -->
+                <div class="bg-white p-5 rounded-3 mb-4">
+                  <h2 class="h4 mb-2">通知設定</h2>
+                  <p class="text-sm text-secondary mb-4">
+                    通知將寄送到 helloworld@gmail.com ，如需變更，請至頁面上方的基本資料修改聯絡信箱</p>
+                  <!-- from-check 工具評價與回饋-->
+                  <div class="mb-4">
+                    <div class="form-check mb-1">
+                      <input 
+                      class="form-check-input" type="checkbox" value="" id="feedback">
+                      <label class="form-check-label" for="feedback">
+                        工具評價與回饋
+                      </label>
+                    </div>
+                    <p class="text-sm text-secondary">即時掌握使用者留下的評價和回饋</p>
+                  </div>
+                  <!-- from-check AI 趨勢與最新工具-->
+                  <div class="mb-4">
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="checkbox" value="" id="aitool">
+                      <label class="form-check-label" for="aitool">
+                        AI 趨勢與最新工具
+                      </label>
+                    </div>
+                    <p class="text-sm text-secondary">推薦適合你的新 AI 工具</p>
+                  </div>
+                  <!-- from-check 工具功能更新-->
+                  <div class="mb-4">
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="checkbox" value="" id="newUpdate">
+                      <label class="form-check-label" for="newUpdate">
+                        工具功能更新
+                      </label>
+                    </div>
+                    <p class="text-sm text-secondary">當你訂閱的 AI 工具有新功能或重要更新時，我們會寄信通知你</p>
+                  </div>
+                  <!-- from-check 活動與優惠資訊-->
+                  <div class="mb-4">
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="checkbox" value="" id="discount">
+                      <label class="form-check-label" for="discount">
+                        活動與優惠資訊
+                      </label>
+                    </div>
+                    <p class="text-sm text-secondary">把握平台限時優惠與活動資訊</p>
+                  </div>
+                </div>
+                <!-- 儲存button -->
+                <div>
+                  <div class="d-grid justify-content-end">
+                    <button class="btn btn-primary rounded-pill px-4 py-2" type="button">儲存</button>
+                  </div>
+                </div>
+              </form>
+            </div><!-- tab-pane 個人資料的結束 -->
+
+            <!-- 2我上架的ai工具 -->
+            <div 
+            class="tab-pane fade"
+            id="upload-tab-pane"
+            role="tabpanel"
+            aria-labelledby="upload-tab"
+            tabindex="0">
+              <div class="p-5 bg-white rounded-3">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <h2 class="h4">我上架的 AI 工具</h2>
+                  <button type="button" class="btn btn-primary rounded-pill px-4 py-2">
+                    上架工具</button>
+                </div>
+                <div class="text-nowrap overflow-x-auto">
+                  <table class="table">
+                    <thead class="border-dark">
+                      <tr>
+                        <td scope="col">工具名稱</td>
+                        <td scope="col">工具類型</td>
+                        <td scope="col">訂閱人數</td>
+                        <td scope="col">狀態</td>
+                        <td scope="col">操作</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td scope="row" class="py-3">AutoTasker</td>
+                        <td class="py-3">生產力工具</td>
+                        <td class="py-3">38</td>
+                        <td class="py-3">
+                          <span class="badge text-bg-success text-sm fw-normal lh-base px-2 py-1 rounded-3">已上架</span>
+                          </td>
+                        <td class="py-3">
+                          <a href="#" class="link-primary">查看訂閱用戶</a></td>
+                      </tr>
+                      <tr>
+                        <td scope="row" class="py-3">PromptCraft</td>
+                        <td class="py-3">內容生成</td>
+                        <td class="py-3">0</td>
+                        <td class="py-3">
+                          <span class="badge text-bg-warning text-sm fw-normal lh-base px-2 py-1 rounded-3">審核中</span>
+                          </td>
+                        <td class="py-3">
+                          <a href="#" class="link-primary">查看訂閱用戶</a></td>
+                      </tr>
+                      <tr>
+                        <td scope="row" class="py-3">SEO Radar</td>
+                        <td class="py-3">資料分析</td>
+                        <td class="py-3">125</td>
+                        <td class="py-3">
+                          <span class="badge text-bg-warning text-sm fw-normal lh-base px-2 py-1 rounded-3">審核中</span>
+                          </td>
+                        <td class="py-3">
+                          <a href="#" class="link-primary">查看訂閱用戶</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div><!-- tab-pane我上架的ai工具的結束 -->
+            
+            <!-- 3我訂閱的ai工具 -->
+            <div 
+            class="tab-pane fade show active"
+            id="subscribe-tab-pane"
+            role="tabpanel"
+            aria-labelledby="subscribe-tab"
+            tabindex="0">
+              <div class="p-5 bg-white rounded-3">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <h2 class="h4">我訂閱的 AI 工具</h2>
+                  <button type="button" class="btn btn-primary rounded-pill px-4 py-2">
+                    一鍵訂閱</button>
+                </div>
+                                <div class="text-nowrap overflow-x-auto">
+                  <table class="table">
+                    <thead class="border-dark">
+                      <tr>
+                        <td scope="col">工具名稱</td>
+                        <td scope="col">工具類型</td>
+                        <td scope="col">訂閱到期時間</td>
+                        <td scope="col">狀態</td>
+                        <td scope="col">操作</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td scope="row" class="py-3">AutoTasker</td>
+                        <td class="py-3">生產力工具</td>
+                        <td class="py-3">2027/1/30</td>
+                        <td class="py-3">
+                          <span class="badge text-bg-success text-sm fw-normal lh-base px-2 py-1 rounded-3">訂閱中</span>
+                          </td>
+                        <td class="py-3">
+                          <a href="#" class="link-primary">取消訂閱</a></td>
+                      </tr>
+                      <tr>
+                        <td scope="row" class="py-3">PromptCraft</td>
+                        <td class="py-3">內容生成</td>
+                        <td class="py-3">2026/8/23</td>
+                        <td class="py-3">
+                          <span class="badge text-bg-danger text-sm fw-normal lh-base px-2 py-1 rounded-3">即將到期</span>
+                          </td>
+                        <td class="py-3">
+                          <a href="#" class="link-primary">取消訂閱</a></td>
+                      </tr>
+                      <tr>
+                        <td scope="row" class="py-3">SEO Radar</td>
+                        <td class="py-3">資料分析</td>
+                        <td class="py-3">2026/8/23</td>
+                        <td class="py-3">
+                          <span class="badge text-bg-danger text-sm fw-normal lh-base px-2 py-1 rounded-3">即將到期</span>
+                          </td>
+                        <td class="py-3">
+                          <a href="#" class="link-primary">取消訂閱</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div><!-- tab-pane我訂閱的ai工具的結束 -->
+
+          </div><!-- tab-content的結束 -->
+        </div><!-- col-lo-9的結束 -->
+      </div><!-- row的結束 -->
+    </div> <!-- container的結束 -->
+  </main><!-- main的結束 -->
 
 
-    <div class="card" style="width: 18rem">
-      <img src="../assets/images/dog.jpg" class="card-img-top" alt="cat" />
-      <div class="card-body">
-        <h5 class="card-title">卡片元件</h5>
-        <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, odit, iusto odio assumenda alias id
-          nobis earum!
-        </p>
-      </div>
-    </div>
 
-    <!-- Modal 按鈕 -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      打開 modal
-    </button>
 
-    <!-- Modal 元件 -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal 標題</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">內容</div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-            <button type="button" class="btn btn-primary">確定</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
+<!-- *footer頁尾 -->
     <%- include('./layout/footer'); -%>
 
     <script type="module" src="../main.js"></script>
